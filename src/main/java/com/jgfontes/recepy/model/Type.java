@@ -1,4 +1,6 @@
 package com.jgfontes.recepy.model;
 
-public class Type {
+public enum Type {
+    DEBIT,
+    CREDIT
 }
