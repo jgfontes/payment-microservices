@@ -1,4 +1,5 @@
 /Users/julio.fontes/Desktop/Pós-FIAP/Projects/payment-microservices/trade-service/src/main/java/com/jgfontes/recepy/RecepyApplication.java
+/Users/julio.fontes/Desktop/Pós-FIAP/Projects/payment-microservices/trade-service/src/main/java/com/jgfontes/recepy/config/RabbitMQConnection.java
 /Users/julio.fontes/Desktop/Pós-FIAP/Projects/payment-microservices/trade-service/src/main/java/com/jgfontes/recepy/config/SecurityConfig.java
 /Users/julio.fontes/Desktop/Pós-FIAP/Projects/payment-microservices/trade-service/src/main/java/com/jgfontes/recepy/config/SwaggerConfig.java
 /Users/julio.fontes/Desktop/Pós-FIAP/Projects/payment-microservices/trade-service/src/main/java/com/jgfontes/recepy/controller/TradeController.java

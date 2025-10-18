@@ -1,0 +1,64 @@
+# Define each service in the application
+services:
+
+  # Database service using PostgresSQL
+  postgres:
+    # Official Postgres image from Docker Hub
+    image: postgres:17
+
+    # Personalized name for better identification
+    container_name: postgres_db
+
+    # Environment variables for database configuration
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: recepy_database
+
+    # Port mapping to access the database from the host
+    ports:
+      - "5432:5432"
+
+    # Volume to persist database data
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # Message broker service using RabbitMQ
+  rabbitmq:
+    # Official RabbitMQ image with management plugin
+    image: rabbitmq:4.1-management
+
+    # Personalized name for better identification
+    container_name: rabbitmq_broker
+
+    # Port mappings for RabbitMQ
+    ports:
+      - "5672:5672"   # RabbitMQ main port
+      - "15672:15672" # web management UI
+
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+
+  # Trade service definition
+  trade-service:
+
+    # Build the Docker image from the specified Dockerfile
+    build:
+      # Build context and Dockerfile location
+      context: ./trade-service
+      dockerfile: Dockerfile
+
+    container_name: trade_service
+
+    # Port mapping to access the service from the host
+    ports:
+      - "8082:8082"
+
+    depends_on:
+      - postgres
+      - rabbitmq
+
+volumes:
+    postgres_data:
+

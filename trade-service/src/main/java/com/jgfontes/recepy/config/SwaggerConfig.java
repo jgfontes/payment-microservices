@@ -1,4 +1,4 @@
-package com.example.trading.config;
+package com.jgfontes.recepy.config;
 
 import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
