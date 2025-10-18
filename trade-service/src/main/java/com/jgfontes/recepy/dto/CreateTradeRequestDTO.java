@@ -6,12 +6,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Getter
 @AllArgsConstructor
 @Builder
-public class CreateTradeRequestDTO {
+public class CreateTradeRequestDTO implements Serializable {
     private BigDecimal amount;
     private String currency;
     private Status status;

@@ -12,7 +12,7 @@ import org.springframework.amqp.core.Queue;
 public class RabbitMQConnection {
 
     private static final String EXCHANGE_NAME = "amq.direct";
-    private static final String TRADE_QUEUE = "TRADE_QUEUE";
+    public static final String TRADE_QUEUE = "TRADE_QUEUE";
     private AmqpAdmin amqpAdmin;
 
     public RabbitMQConnection(AmqpAdmin amqpAdmin) {

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface TradeService {
-    Trade createTrade(CreateTradeRequestDTO createTradeRequest);
+    TradeDTO createTrade(CreateTradeRequestDTO createTradeRequest);
     List<TradeDTO> getAllTrades();
     TradeDTO getTradeById(UUID id);
     TradeDTO updateTrade(UUID id, UpdateTradeRequestDTO updateTradeRequestDTO);

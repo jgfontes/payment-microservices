@@ -24,8 +24,8 @@ public class TradeController {
 
     @Operation(summary = "Create a new trade")
     @PostMapping("/create")
-    public ResponseEntity<Trade> createTrade(@RequestBody CreateTradeRequestDTO trade) {
-        Trade created = tradeService.createTrade(trade);
+    public ResponseEntity<TradeDTO> createTrade(@RequestBody CreateTradeRequestDTO trade) {
+        TradeDTO created = tradeService.createTrade(trade);
         return ResponseEntity.ok(created);
     }
 

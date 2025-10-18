@@ -16,17 +16,23 @@ import java.util.UUID;
 @Service
 public class TradeServiceImpl implements TradeService {
 
-    private final TradeRepository tradeRepository;
+    @Autowired
+    private TradeRepository tradeRepository;
 
     @Autowired
-    public TradeServiceImpl(TradeRepository tradeRepository) {
-        this.tradeRepository = tradeRepository;
-    }
+    private MessageBrokerService messageBrokerService;
 
     @Override
-    public Trade createTrade(CreateTradeRequestDTO createTradeRequestDTO) {
-        Trade trade = TradeMapper.mapCreateRequestToEntity(createTradeRequestDTO);
-        return tradeRepository.save(trade);
+    public TradeDTO createTrade(CreateTradeRequestDTO createTradeRequestDTO) {
+        Trade trade = TradeMapper.mapCreateRequestToEntity(createTradeRequestDTO); // Is the ID generated here?
+        System.out.println("Saving trade to database");
+        Trade savedTrade =  tradeRepository.save(trade);
+
+        TradeDTO tradeDTO = TradeMapper.mapEntityToDTO(savedTrade);
+        System.out.println("Publishing trade to message broker: " + tradeDTO);
+        messageBrokerService.publishMessage(tradeDTO);
+
+        return tradeDTO;
     }
 
     @Override
