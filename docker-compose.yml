@@ -1,5 +1,23 @@
 # Define each service in the application
 services:
+    # Trade service definition
+  trade-service:
+
+    # Build the Docker image from the specified Dockerfile
+    build:
+      # Build context and Dockerfile location
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: trade_service
+
+    # Port mapping to access the service from the host
+    ports:
+      - "8082:8082"
+
+    depends_on:
+      - postgres
+
   # Database service using PostgresSQL
   postgres:
     # Official Postgres image from Docker Hub
@@ -19,5 +37,9 @@ services:
       - "5432:5432"
 
     # Volume to persist database data
-#    volumes:
-#      - postgres_data:/var/lib/postgresql/data
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+    postgres_data:
+
