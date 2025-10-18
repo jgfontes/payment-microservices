@@ -1,0 +1,15 @@
+/Users/julio.fontes/Desktop/Pós-FIAP/Projects/payment-microservices/trade-service/src/main/java/com/jgfontes/recepy/RecepyApplication.java
+/Users/julio.fontes/Desktop/Pós-FIAP/Projects/payment-microservices/trade-service/src/main/java/com/jgfontes/recepy/config/SecurityConfig.java
+/Users/julio.fontes/Desktop/Pós-FIAP/Projects/payment-microservices/trade-service/src/main/java/com/jgfontes/recepy/config/SwaggerConfig.java
+/Users/julio.fontes/Desktop/Pós-FIAP/Projects/payment-microservices/trade-service/src/main/java/com/jgfontes/recepy/controller/TradeController.java
+/Users/julio.fontes/Desktop/Pós-FIAP/Projects/payment-microservices/trade-service/src/main/java/com/jgfontes/recepy/dto/CreateTradeRequestDTO.java
+/Users/julio.fontes/Desktop/Pós-FIAP/Projects/payment-microservices/trade-service/src/main/java/com/jgfontes/recepy/dto/TradeDTO.java
+/Users/julio.fontes/Desktop/Pós-FIAP/Projects/payment-microservices/trade-service/src/main/java/com/jgfontes/recepy/dto/UpdateTradeRequestDTO.java
+/Users/julio.fontes/Desktop/Pós-FIAP/Projects/payment-microservices/trade-service/src/main/java/com/jgfontes/recepy/model/Currency.java
+/Users/julio.fontes/Desktop/Pós-FIAP/Projects/payment-microservices/trade-service/src/main/java/com/jgfontes/recepy/model/Status.java
+/Users/julio.fontes/Desktop/Pós-FIAP/Projects/payment-microservices/trade-service/src/main/java/com/jgfontes/recepy/model/Trade.java
+/Users/julio.fontes/Desktop/Pós-FIAP/Projects/payment-microservices/trade-service/src/main/java/com/jgfontes/recepy/model/Type.java
+/Users/julio.fontes/Desktop/Pós-FIAP/Projects/payment-microservices/trade-service/src/main/java/com/jgfontes/recepy/repository/TradeRepository.java
+/Users/julio.fontes/Desktop/Pós-FIAP/Projects/payment-microservices/trade-service/src/main/java/com/jgfontes/recepy/service/TradeService.java
+/Users/julio.fontes/Desktop/Pós-FIAP/Projects/payment-microservices/trade-service/src/main/java/com/jgfontes/recepy/service/TradeServiceImpl.java
+/Users/julio.fontes/Desktop/Pós-FIAP/Projects/payment-microservices/trade-service/src/main/java/com/jgfontes/recepy/util/TradeMapper.java
