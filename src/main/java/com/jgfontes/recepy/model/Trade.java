@@ -1,9 +1,10 @@
 package com.jgfontes.recepy.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -12,7 +13,9 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Entity
 public class Trade {
+    @Id
     private UUID id;
     private BigDecimal amount;
     private String currency;

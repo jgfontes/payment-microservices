@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/v1/api/trades")
+@RequestMapping("/api/trades")
 @Tag(name = "Trade Controller", description = "Endpoints for managing trades")
 public class TradeController {
 
