@@ -1,10 +1,11 @@
-package com.jgfontes.recepy.model;
+package com.jgfontes.recepy.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.*;
+import com.jgfontes.recepy.model.Status;
+import com.jgfontes.recepy.model.Type;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -13,12 +14,8 @@ import java.util.UUID;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @Builder
-@Entity
-public class Trade {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class TradeDTO {
     private UUID id;
     private BigDecimal amount;
     private String currency;
