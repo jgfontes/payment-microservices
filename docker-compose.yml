@@ -18,6 +18,23 @@ services:
     depends_on:
       - postgres
 
+  # Message broker service using RabbitMQ
+  rabbitmq:
+    # Official RabbitMQ image with management plugin
+    image: rabbitmq:4.1-management
+
+    # Personalized name for better identification
+    container_name: rabbitmq_broker
+
+    # Port mappings for RabbitMQ
+    ports:
+      - "5672:5672"   # RabbitMQ main port
+      - "15672:15672" # web management UI
+
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+
   # Database service using PostgresSQL
   postgres:
     # Official Postgres image from Docker Hub
