@@ -1,7 +1,17 @@
 package com.jgfontes.recepy.model;
 
 public enum Status {
-    PENDING,
-    COMPLETED,
-    FAILED
+    PENDING(0),
+    COMPLETED(1),
+    FAILED(2);
+
+    private final int code;
+
+    Status(int code) {
+        this.code = code;
+    }
+
+    public int getCode() {
+        return code;
+    }
 }

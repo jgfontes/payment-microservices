@@ -1,5 +1,8 @@
 package com.jgfontes.recepy.controller;
 
+import com.jgfontes.recepy.dto.CreateTradeRequestDTO;
+import com.jgfontes.recepy.dto.TradeDTO;
+import com.jgfontes.recepy.dto.UpdateTradeRequestDTO;
 import com.jgfontes.recepy.model.Trade;
 import com.jgfontes.recepy.service.TradeService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -21,28 +24,28 @@ public class TradeController {
 
     @Operation(summary = "Create a new trade")
     @PostMapping("/create")
-    public ResponseEntity<Trade> createTrade(@RequestBody Trade trade) {
+    public ResponseEntity<Trade> createTrade(@RequestBody CreateTradeRequestDTO trade) {
         Trade created = tradeService.createTrade(trade);
         return ResponseEntity.ok(created);
     }
 
     @Operation(summary = "Get all trades")
     @GetMapping("/findAll")
-    public ResponseEntity<List<Trade>> getAllTrades() {
+    public ResponseEntity<List<TradeDTO>> getAllTrades() {
         return ResponseEntity.ok(tradeService.getAllTrades());
     }
 
     @Operation(summary = "Get a trade by ID")
     @GetMapping("/{id}")
-    public ResponseEntity<Trade> getTradeById(@PathVariable UUID id) {
-        Trade trade = tradeService.getTradeById(id);
+    public ResponseEntity<TradeDTO> getTradeById(@PathVariable UUID id) {
+        TradeDTO trade = tradeService.getTradeById(id);
         return trade != null ? ResponseEntity.ok(trade) : ResponseEntity.notFound().build();
     }
 
     @Operation(summary = "Update a trade")
     @PutMapping("/{id}")
-    public ResponseEntity<Trade> updateTrade(@PathVariable UUID id, @RequestBody Trade trade) {
-        Trade updated = tradeService.updateTrade(id, trade);
+    public ResponseEntity<TradeDTO> updateTrade(@PathVariable UUID id, @RequestBody UpdateTradeRequestDTO updateTradeRequestDTO) {
+        TradeDTO updated = tradeService.updateTrade(id, updateTradeRequestDTO);
         return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
 

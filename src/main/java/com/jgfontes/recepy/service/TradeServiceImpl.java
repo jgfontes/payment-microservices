@@ -1,7 +1,11 @@
 package com.jgfontes.recepy.service;
 
+import com.jgfontes.recepy.dto.CreateTradeRequestDTO;
+import com.jgfontes.recepy.dto.TradeDTO;
+import com.jgfontes.recepy.dto.UpdateTradeRequestDTO;
 import com.jgfontes.recepy.model.Trade;
 import com.jgfontes.recepy.repository.TradeRepository;
+import com.jgfontes.recepy.util.TradeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,25 +24,33 @@ public class TradeServiceImpl implements TradeService {
     }
 
     @Override
-    public Trade createTrade(Trade trade) {
+    public Trade createTrade(CreateTradeRequestDTO createTradeRequestDTO) {
+        Trade trade = TradeMapper.mapCreateRequestToEntity(createTradeRequestDTO);
         return tradeRepository.save(trade);
     }
 
     @Override
-    public List<Trade> getAllTrades() {
-        return tradeRepository.findAll();
+    public List<TradeDTO> getAllTrades() {
+        return tradeRepository.findAll()
+                .stream()
+                .map(TradeMapper::mapEntityToDTO)
+                .toList();
     }
 
     @Override
-    public Trade getTradeById(UUID id) {
-        return tradeRepository.findById(id).orElse(null);
+    public TradeDTO getTradeById(UUID id) {
+        return tradeRepository.findById(id)
+                .map(TradeMapper::mapEntityToDTO)
+                .orElse(null);
     }
 
     @Override
-    public Trade updateTrade(UUID id, Trade trade) {
+    public TradeDTO updateTrade(UUID id, UpdateTradeRequestDTO updateTradeRequestDTO) {
         Optional<Trade> existing = tradeRepository.findById(id);
         if (existing.isPresent() && existing.get().getId().equals(id)) {
-            return tradeRepository.save(trade);
+            Trade mappedTrade = TradeMapper.mapUpdateRequestToEntity(updateTradeRequestDTO);
+            Trade persistedTrade = tradeRepository.save(mappedTrade);
+            return TradeMapper.mapEntityToDTO(persistedTrade);
         }
 
         return null;
