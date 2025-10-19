@@ -42,7 +42,6 @@ services:
 
   # Trade service definition
   trade-service:
-
     # Build the Docker image from the specified Dockerfile
     build:
       # Build context and Dockerfile location
@@ -57,6 +56,23 @@ services:
 
     depends_on:
       - postgres
+      - rabbitmq
+
+  # Trade service definition
+  receipt-service:
+    # Build the Docker image from the specified Dockerfile
+    build:
+      # Build context and Dockerfile location
+      context: ./receipt-service
+      dockerfile: Dockerfile
+
+    container_name: receipt_service
+
+    # Port mapping to access the service from the host
+    ports:
+      - "8083:8083"
+
+    depends_on:
       - rabbitmq
 
 volumes:
