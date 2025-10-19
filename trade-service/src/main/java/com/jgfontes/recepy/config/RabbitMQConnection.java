@@ -4,6 +4,11 @@ import jakarta.annotation.PostConstruct;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.DirectExchange;
+import org.springframework.amqp.support.converter.DefaultJackson2JavaTypeMapper;
+import org.springframework.amqp.support.converter.Jackson2JavaTypeMapper;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.MessageConverter;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import org.springframework.amqp.core.Queue;
@@ -13,7 +18,7 @@ public class RabbitMQConnection {
 
     private static final String EXCHANGE_NAME = "amq.direct";
     public static final String TRADE_QUEUE = "TRADE_QUEUE";
-    private AmqpAdmin amqpAdmin;
+    private final AmqpAdmin amqpAdmin;
 
     public RabbitMQConnection(AmqpAdmin amqpAdmin) {
         this.amqpAdmin = amqpAdmin;
@@ -29,6 +34,16 @@ public class RabbitMQConnection {
 
     private Binding binding(Queue queue, DirectExchange exchange) {
         return new Binding(queue.getName(), Binding.DestinationType.QUEUE, exchange.getName(), queue.getName(), null);
+    }
+
+    @Bean
+    public MessageConverter jsonMessageConverter() {
+        Jackson2JsonMessageConverter converter = new Jackson2JsonMessageConverter();
+        converter.setTypePrecedence(Jackson2JavaTypeMapper.TypePrecedence.INFERRED);
+        converter.setJavaTypeMapper(new DefaultJackson2JavaTypeMapper() {{
+            setTrustedPackages("*");
+        }});
+        return converter;
     }
 
     @PostConstruct
@@ -51,7 +66,7 @@ public class RabbitMQConnection {
                     throw e;
                 }
                 try {
-                    Thread.sleep(2000); // Wait before retry
+                    Thread.sleep(1000); // Wait before retry
                 } catch (InterruptedException ie) {
                     Thread.currentThread().interrupt();
                     throw new RuntimeException(ie);
