@@ -18,7 +18,7 @@ public class RabbitMQConnection {
 
     private static final String EXCHANGE_NAME = "amq.direct";
     public static final String TRADE_QUEUE = "TRADE_QUEUE";
-    private AmqpAdmin amqpAdmin;
+    private final AmqpAdmin amqpAdmin;
 
     public RabbitMQConnection(AmqpAdmin amqpAdmin) {
         this.amqpAdmin = amqpAdmin;
@@ -66,7 +66,7 @@ public class RabbitMQConnection {
                     throw e;
                 }
                 try {
-                    Thread.sleep(2000); // Wait before retry
+                    Thread.sleep(1000); // Wait before retry
                 } catch (InterruptedException ie) {
                     Thread.currentThread().interrupt();
                     throw new RuntimeException(ie);

@@ -34,7 +34,6 @@ public class ConsumerConfig {
     public SimpleMessageConverter simpleMessageConverter() {
         SimpleMessageConverter converter = new SimpleMessageConverter();
         converter.setAllowedListPatterns(List.of(
-                "com.jgfontes.receipt_service.dto.*",
                 "java.time.*",
                 "java.util.*",
                 "java.lang.Enum"));
