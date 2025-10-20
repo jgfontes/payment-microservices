@@ -1,7 +1,7 @@
-package com.jgfontes.recepy.dto;
+package com.jgfontes.trade_service.dto;
 
-import com.jgfontes.recepy.model.Status;
-import com.jgfontes.recepy.model.Type;
+import com.jgfontes.trade_service.model.Status;
+import com.jgfontes.trade_service.model.Type;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

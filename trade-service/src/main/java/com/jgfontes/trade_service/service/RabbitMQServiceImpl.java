@@ -1,6 +1,6 @@
-package com.jgfontes.recepy.service;
+package com.jgfontes.trade_service.service;
 
-import com.jgfontes.recepy.config.RabbitMQConnection;
+import com.jgfontes.trade_service.config.RabbitMQConnection;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

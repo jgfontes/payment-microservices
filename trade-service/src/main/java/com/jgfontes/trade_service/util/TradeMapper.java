@@ -1,9 +1,8 @@
-package com.jgfontes.recepy.util;
+package com.jgfontes.trade_service.util;
 
-import com.jgfontes.recepy.dto.CreateTradeRequestDTO;
-import com.jgfontes.recepy.dto.TradeDTO;
-import com.jgfontes.recepy.dto.UpdateTradeRequestDTO;
-import com.jgfontes.recepy.model.Trade;
+import com.jgfontes.trade_service.dto.CreateTradeRequestDTO;
+import com.jgfontes.trade_service.dto.TradeDTO;
+import com.jgfontes.trade_service.model.Trade;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
@@ -18,16 +17,6 @@ public class TradeMapper {
             .type(createTradeRequestDTO.getType())
             .clientId(createTradeRequestDTO.getClientId())
             .createdAt(Instant.now())
-            .updatedAt(Instant.now())
-            .build();
-    }
-
-    public static Trade mapUpdateRequestToEntity(UpdateTradeRequestDTO updateTradeRequestDTO) {
-        return Trade.builder().amount(updateTradeRequestDTO.getAmount())
-            .currency(updateTradeRequestDTO.getCurrency())
-            .status(updateTradeRequestDTO.getStatus())
-            .type(updateTradeRequestDTO.getType())
-            .clientId(updateTradeRequestDTO.getClientId())
             .updatedAt(Instant.now())
             .build();
     }

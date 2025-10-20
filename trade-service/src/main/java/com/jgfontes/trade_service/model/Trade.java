@@ -1,4 +1,4 @@
-package com.jgfontes.recepy.model;
+package com.jgfontes.trade_service.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

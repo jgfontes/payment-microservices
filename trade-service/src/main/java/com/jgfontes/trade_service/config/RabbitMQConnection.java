@@ -1,4 +1,4 @@
-package com.jgfontes.recepy.config;
+package com.jgfontes.trade_service.config;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.amqp.core.AmqpAdmin;

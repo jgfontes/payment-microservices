@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.jgfontes</groupId>
-	<artifactId>recepy</artifactId>
+	<artifactId>trade-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>recepy</name>
+	<name>trade-service</name>
 	<description>A distributed trading system built on microservices architecture for scalable transaction handling. Every trade event triggers an automated receipt generation pipeline for transparency and traceability.</description>
 	<url/>
 	<licenses>

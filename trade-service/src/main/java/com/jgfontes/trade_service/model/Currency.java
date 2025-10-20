@@ -1,4 +1,4 @@
-package com.jgfontes.recepy.model;
+package com.jgfontes.trade_service.model;
 
 public enum Currency {
     USD,

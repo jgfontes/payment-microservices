@@ -1,4 +1,4 @@
-package com.jgfontes.recepy.service;
+package com.jgfontes.trade_service.service;
 
 import java.io.Serializable;
 

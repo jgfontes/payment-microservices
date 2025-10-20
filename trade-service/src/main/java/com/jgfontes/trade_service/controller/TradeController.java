@@ -1,10 +1,8 @@
-package com.jgfontes.recepy.controller;
+package com.jgfontes.trade_service.controller;
 
-import com.jgfontes.recepy.dto.CreateTradeRequestDTO;
-import com.jgfontes.recepy.dto.TradeDTO;
-import com.jgfontes.recepy.dto.UpdateTradeRequestDTO;
-import com.jgfontes.recepy.model.Trade;
-import com.jgfontes.recepy.service.TradeService;
+import com.jgfontes.trade_service.dto.CreateTradeRequestDTO;
+import com.jgfontes.trade_service.dto.TradeDTO;
+import com.jgfontes.trade_service.service.TradeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,23 +34,16 @@ public class TradeController {
     }
 
     @Operation(summary = "Get a trade by ID")
-    @GetMapping("/{id}")
+    @GetMapping("/find/{id}")
     public ResponseEntity<TradeDTO> getTradeById(@PathVariable UUID id) {
         TradeDTO trade = tradeService.getTradeById(id);
         return trade != null ? ResponseEntity.ok(trade) : ResponseEntity.notFound().build();
     }
 
-    @Operation(summary = "Update a trade")
-    @PutMapping("/{id}")
-    public ResponseEntity<TradeDTO> updateTrade(@PathVariable UUID id, @RequestBody UpdateTradeRequestDTO updateTradeRequestDTO) {
-        TradeDTO updated = tradeService.updateTrade(id, updateTradeRequestDTO);
-        return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
-    }
-
-    @Operation(summary = "Delete a trade")
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTrade(@PathVariable UUID id) {
-        boolean deleted = tradeService.deleteTrade(id);
-        return deleted ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+    @Operation(summary = "Get a trade by ClientID")
+    @GetMapping("/find-by-client-id/{clientId}")
+    public ResponseEntity<List<TradeDTO>> getTradeByClientId(@PathVariable String clientId) {
+        List<TradeDTO> trades = tradeService.getTradesByClientId(clientId);
+        return !trades.isEmpty() ? ResponseEntity.ok(trades) : ResponseEntity.notFound().build();
     }
 }
