@@ -13,7 +13,7 @@ services:
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
-      POSTGRES_DB: recepy_database
+      POSTGRES_DB: trade_service_database
 
     # Port mapping to access the database from the host
     ports:

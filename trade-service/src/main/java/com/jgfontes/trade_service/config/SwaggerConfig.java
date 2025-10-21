@@ -18,6 +18,6 @@ public class SwaggerConfig {
                     .version("v1.0"))
                 .externalDocs(new ExternalDocumentation()
                     .description("Trading Service Repository")
-                    .url("https://github.com/jgfontes/Recepy"));
+                    .url("https://github.com/jgfontes/payment-microservices"));
     }
 }
