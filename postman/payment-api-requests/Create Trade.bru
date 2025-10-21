@@ -1,0 +1,30 @@
+meta {
+  name: Create Trade
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8082/api/trades/create
+  body: json
+  auth: inherit
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "amount": 100.50,
+    "currency": "USD",
+    "status": "COMPLETED",
+    "type": "DEBIT",
+    "clientId": "client123"
+  }
+}
+
+settings {
+  encodeUrl: false
+  timeout: 0
+}

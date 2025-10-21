@@ -1,0 +1,16 @@
+meta {
+  name: Get All Trades
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:8082/api/trades/findAll
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: false
+  timeout: 0
+}
