@@ -121,8 +121,3 @@ The Trade Service API is protected with HTTP Basic authentication.
 - **Password:** `${SPRING_SECURITY_USER_PASSWORD}` (default: `password`)
 
 You can override these credentials using environment variables in your `docker-compose.yml` or at runtime.
-
-## 🧑‍💻 Author
-
-**Júlio Gurgel Fontes**
-- GitHub: [github.com/juliogurgel]
