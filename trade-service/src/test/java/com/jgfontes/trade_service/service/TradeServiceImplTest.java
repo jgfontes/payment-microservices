@@ -2,6 +2,7 @@ package com.jgfontes.trade_service.service;
 
 import com.jgfontes.trade_service.dto.CreateTradeRequestDTO;
 import com.jgfontes.trade_service.dto.TradeDTO;
+import com.jgfontes.trade_service.model.Currency;
 import com.jgfontes.trade_service.model.Status;
 import com.jgfontes.trade_service.model.Trade;
 import com.jgfontes.trade_service.model.Type;
@@ -53,7 +54,7 @@ public class TradeServiceImplTest {
         trade = Trade.builder()
                 .id(tradeId)
                 .amount(new BigDecimal("100.50"))
-                .currency("USD")
+                .currency(Currency.USD)
                 .type(Type.DEBIT)
                 .status(Status.COMPLETED)
                 .clientId(clientId)
@@ -63,7 +64,7 @@ public class TradeServiceImplTest {
 
         createRequest = CreateTradeRequestDTO.builder()
                 .amount(new BigDecimal("100.50"))
-                .currency("USD")
+                .currency(Currency.USD)
                 .type(Type.DEBIT)
                 .status(Status.COMPLETED)
                 .clientId(clientId)

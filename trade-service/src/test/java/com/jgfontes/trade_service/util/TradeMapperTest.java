@@ -2,6 +2,7 @@ package com.jgfontes.trade_service.util;
 
 import com.jgfontes.trade_service.dto.CreateTradeRequestDTO;
 import com.jgfontes.trade_service.dto.TradeDTO;
+import com.jgfontes.trade_service.model.Currency;
 import com.jgfontes.trade_service.model.Status;
 import com.jgfontes.trade_service.model.Trade;
 import com.jgfontes.trade_service.model.Type;
@@ -20,7 +21,7 @@ class TradeMapperTest {
         // Arrange
         CreateTradeRequestDTO request = CreateTradeRequestDTO.builder()
                 .amount(new BigDecimal("100.50"))
-                .currency("USD")
+                .currency(Currency.USD)
                 .status(Status.COMPLETED)
                 .type(Type.DEBIT)
                 .clientId("client123")
@@ -32,7 +33,7 @@ class TradeMapperTest {
         // Assert
         assertThat(result).isNotNull();
         assertThat(result.getAmount()).isEqualByComparingTo("100.50");
-        assertThat(result.getCurrency()).isEqualTo("USD");
+        assertThat(result.getCurrency()).isEqualTo(Currency.USD);
         assertThat(result.getStatus()).isEqualTo(Status.COMPLETED);
         assertThat(result.getType()).isEqualTo(Type.DEBIT);
         assertThat(result.getClientId()).isEqualTo("client123");
@@ -50,7 +51,7 @@ class TradeMapperTest {
         TradeDTO dto = TradeDTO.builder()
                 .id(id)
                 .amount(new BigDecimal("200.75"))
-                .currency("EUR")
+                .currency(Currency.EUR)
                 .status(Status.PENDING)
                 .type(Type.CREDIT)
                 .clientId("client456")
@@ -65,7 +66,7 @@ class TradeMapperTest {
         assertThat(result).isNotNull();
         assertThat(result.getId()).isEqualTo(id);
         assertThat(result.getAmount()).isEqualByComparingTo("200.75");
-        assertThat(result.getCurrency()).isEqualTo("EUR");
+        assertThat(result.getCurrency()).isEqualTo(Currency.EUR);
         assertThat(result.getStatus()).isEqualTo(Status.PENDING);
         assertThat(result.getType()).isEqualTo(Type.CREDIT);
         assertThat(result.getClientId()).isEqualTo("client456");
@@ -83,7 +84,7 @@ class TradeMapperTest {
         Trade entity = Trade.builder()
                 .id(id)
                 .amount(new BigDecimal("300.25"))
-                .currency("GBP")
+                .currency(Currency.EUR)
                 .status(Status.FAILED)
                 .type(Type.DEBIT)
                 .clientId("client789")
@@ -98,7 +99,7 @@ class TradeMapperTest {
         assertThat(result).isNotNull();
         assertThat(result.getId()).isEqualTo(id);
         assertThat(result.getAmount()).isEqualByComparingTo("300.25");
-        assertThat(result.getCurrency()).isEqualTo("GBP");
+        assertThat(result.getCurrency()).isEqualTo(Currency.EUR);
         assertThat(result.getStatus()).isEqualTo(Status.FAILED);
         assertThat(result.getType()).isEqualTo(Type.DEBIT);
         assertThat(result.getClientId()).isEqualTo("client789");

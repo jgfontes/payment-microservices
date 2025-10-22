@@ -5,6 +5,7 @@ import com.jgfontes.trade_service.dto.TradeDTO;
 import com.jgfontes.trade_service.service.TradeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -25,7 +26,7 @@ public class TradeController {
 
     @Operation(summary = "Create a new trade")
     @PostMapping("/create")
-    public ResponseEntity<TradeDTO> createTrade(@RequestBody CreateTradeRequestDTO trade) {
+    public ResponseEntity<TradeDTO> createTrade(@Valid @RequestBody CreateTradeRequestDTO trade) {
         TradeDTO created = tradeService.createTrade(trade);
         return ResponseEntity.ok(created);
     }

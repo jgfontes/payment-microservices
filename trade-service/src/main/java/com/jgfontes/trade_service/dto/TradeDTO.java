@@ -1,5 +1,6 @@
 package com.jgfontes.trade_service.dto;
 
+import com.jgfontes.trade_service.model.Currency;
 import com.jgfontes.trade_service.model.Status;
 import com.jgfontes.trade_service.model.Type;
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ import java.util.UUID;
 public class TradeDTO implements Serializable {
     private UUID id;
     private BigDecimal amount;
-    private String currency;
+    private Currency currency;
     private Status status;
     private Type type;
     private String clientId;

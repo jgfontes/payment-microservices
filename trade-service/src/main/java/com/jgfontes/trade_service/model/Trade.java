@@ -1,9 +1,6 @@
 package com.jgfontes.trade_service.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -21,7 +18,8 @@ public class Trade {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private BigDecimal amount;
-    private String currency;
+    @Enumerated(EnumType.STRING)
+    private Currency currency;
     private Status status;
     private Type type;
     private String clientId;
