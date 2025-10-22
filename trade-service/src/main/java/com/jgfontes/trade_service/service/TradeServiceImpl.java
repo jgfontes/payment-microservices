@@ -6,6 +6,8 @@ import com.jgfontes.trade_service.model.Trade;
 import com.jgfontes.trade_service.repository.TradeRepository;
 import com.jgfontes.trade_service.util.TradeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,11 +37,8 @@ public class TradeServiceImpl implements TradeService {
     }
 
     @Override
-    public List<TradeDTO> getAllTrades() {
-        return tradeRepository.findAll()
-                .stream()
-                .map(TradeMapper::mapEntityToDTO)
-                .toList();
+    public Page<TradeDTO> getAllTrades(Pageable pageable) {
+        return tradeRepository.findAll(pageable).map(TradeMapper::mapEntityToDTO);
     }
 
     @Override

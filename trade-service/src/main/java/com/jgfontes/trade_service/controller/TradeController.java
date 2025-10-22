@@ -6,6 +6,9 @@ import com.jgfontes.trade_service.service.TradeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,8 +32,9 @@ public class TradeController {
 
     @Operation(summary = "Get all trades")
     @GetMapping("/findAll")
-    public ResponseEntity<List<TradeDTO>> getAllTrades() {
-        return ResponseEntity.ok(tradeService.getAllTrades());
+    public ResponseEntity<Page<TradeDTO>> getAllTrades(@RequestParam(defaultValue = "0") int page,
+                                                       @RequestParam(defaultValue = "10") int size) {
+        return ResponseEntity.ok(tradeService.getAllTrades(PageRequest.of(page, size)));
     }
 
     @Operation(summary = "Get a trade by ID")

@@ -12,6 +12,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -91,15 +95,15 @@ public class TradeServiceImplTest {
                 .type(Type.CREDIT)
                 .build();
 
-        when(tradeRepository.findAll()).thenReturn(Arrays.asList(trade, trade2));
+        when(tradeRepository.findAll(any(Pageable.class))).thenReturn(new PageImpl<>(Arrays.asList(trade, trade2)));
 
         // Act
-        List<TradeDTO> result = tradeService.getAllTrades();
+        Page<TradeDTO> result = tradeService.getAllTrades(PageRequest.of(0, 10));
 
         // Assert
         assertThat(result).hasSize(2);
-        assertThat(result.get(0).getId()).isEqualTo(tradeId);
-        assertThat(result.get(1).getClientId()).isEqualTo("client456");
+        assertThat(result.getContent().get(0).getId()).isEqualTo(tradeId);
+        assertThat(result.getContent().get(1).getClientId()).isEqualTo("client456");
     }
 
     @Test
