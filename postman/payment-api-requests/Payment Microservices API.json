@@ -1,0 +1,199 @@
+{
+  "info": {
+    "name": "Payment Microservices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Trade",
+      "event": [],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "disabled": false,
+            "type": "default"
+          }
+        ],
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "{{tradeApiPassword}}",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "{{tradeApiUsername}}",
+              "type": "string"
+            }
+          ]
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost:8082/api/trades/create",
+          "protocol": "http",
+          "host": [
+            "localhost:8082"
+          ],
+          "path": [
+            "api",
+            "trades",
+            "create"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"amount\": 20.50,\n  \"currency\": \"USD\",\n  \"status\": \"COMPLETED\",\n  \"type\": \"DEBIT\",\n  \"clientId\": \"client2\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Get All Trades",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "{{tradeApiPassword}}",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "{{tradeApiUsername}}",
+              "type": "string"
+            }
+          ]
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost:8082/api/trades/findAll?page=0&size=5",
+          "protocol": "http",
+          "host": [
+            "localhost:8082"
+          ],
+          "path": [
+            "api",
+            "trades",
+            "findAll"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "0"
+            },
+            {
+              "key": "size",
+              "value": "5"
+            }
+          ],
+          "variable": []
+        }
+      }
+    },
+    {
+      "name": "Get Trade By Client ID",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "{{tradeApiPassword}}",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "{{tradeApiUsername}}",
+              "type": "string"
+            }
+          ]
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost:8082/api/trades/find-by-client-id/client2",
+          "protocol": "http",
+          "host": [
+            "localhost:8082"
+          ],
+          "path": [
+            "api",
+            "trades",
+            "find-by-client-id",
+            "client2"
+          ],
+          "query": [],
+          "variable": []
+        }
+      }
+    },
+    {
+      "name": "Get Trade By ID",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "{{tradeApiPassword}}",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "{{tradeApiUsername}}",
+              "type": "string"
+            }
+          ]
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost:8082/api/trades/find/ff9b753f-3c69-4724-889d-e55d5293de1c",
+          "protocol": "http",
+          "host": [
+            "localhost:8082"
+          ],
+          "path": [
+            "api",
+            "trades",
+            "find",
+            "ff9b753f-3c69-4724-889d-e55d5293de1c"
+          ],
+          "query": [],
+          "variable": []
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "tradeApiUsername",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "tradeApiPassword",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
